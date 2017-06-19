@@ -1,0 +1,77 @@
+variable 	Kn equal 10000
+variable 	Kt equal 0.0
+variable 	Gn equal 0.0
+variable 	Gt equal 0.0
+variable 	mup equal 0.0
+variable 	dflag equal 0
+variable	FLD_VISC equal 1.0
+variable 	T_STEP equal 0.00001
+variable DIA1 equal 1.0
+variable MASS1 equal (PI*(${DIA1}^3.0)/6.0)
+variable DIA2 equal 1.0
+variable MASS2 equal (PI*(${DIA2}^3.0)/6.0)
+variable SHEAR_RATE equal 1
+atom_style	sphere
+boundary	p p p
+newton		off
+comm_modify	mode single vel yes
+region		reg prism -10 10 -10 10 -10 10 0 0 0 units box
+create_box	2 reg
+neighbor	0.2 bin
+neigh_modify	delay 0
+
+print "Vol=$(vol)"
+create_atoms 1 single  -9.5 0.0 0.0    
+#create_atoms 1 single 0.0 7.7 0.0
+#create_atoms 1 single -0.52 0.1 1
+group right type 1
+velocity right set 0 0 0 
+set type 1 omega 0 1 0 
+
+create_atoms 2 single 9.5 0.0 0.0    
+#create_atoms 2 single 0.0 6.5 0.0
+#create_atoms 2 single 0.52 -0.2 1
+group left type 2
+velocity left set 0 0 0 
+set type 2 omega 0 -1 0
+
+set type 1 diameter ${DIA1}
+set type 1 mass     ${MASS1}
+set type 2 diameter ${DIA2}
+set type 2 mass     ${MASS2}
+
+timestep ${T_STEP}
+fix		1 all nve/sphere
+
+#pair_style      gran/hooke/history ${Kn} ${Kt} ${Gn} ${Gt} ${mup} ${dflag}
+#pair_coeff 	* *
+#pair_style      hybrid/overlayStressContributions gran/hooke/history ${Kn} ${Kt} ${Gn} ${Gt} ${mup} ${dflag} lubricate/GRM ${FLD_VISC} 1 0 1.001 1.05 1 0
+#pair_coeff      * * gran/hooke/history
+#pair_coeff      1 1 lubricate/Simple 1.001 1.05
+#pair_coeff      2 2 lubricate/Simple 1.4014 1.47
+#pair_coeff      1 2 lubricate/Simple 1.2012 1.26
+
+pair_style      lubricate/Simple ${FLD_VISC} 1 0 1.001 1.05 1 0
+pair_coeff      1 1 1.001 1.05
+pair_coeff      2 2 1.001 1.05
+pair_coeff      1 2 1.001 1.05
+
+#pair_coeff      2 2 1.4014 1.47
+#pair_coeff      1 2 1.2012 1.26
+
+compute mytemp all temp
+compute mypres all pressure NULL pair
+
+#compute SC all pressureStressContributionsArray mytemp nStyles 2
+
+#fix 2 all deform 1 xy erate 0.05 remap v
+#fix pStresses all print 1000 "$(step) $(c_mypres[4]) $(c_SC[1][4]) $(c_SC[2][4])" append stressOutputKE screen no 
+fix pStresses all print 1 "$(step) $(c_mypres[4])" append stressOutputKE screen no 
+
+thermo_style    custom step c_mytemp c_mypres[4]# c_SC[1][4] c_SC[2][4]
+thermo		1
+thermo_modify	lost ignore norm no
+compute_modify	thermo_temp dynamic yes
+
+dump	id all custom 1 dump.lammpstrj id type radius mass x y z vx vy vz fx fy fz tqx tqy tqz omegax omegay omegaz
+run 50
