@@ -20,6 +20,11 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 * Ranga (r.radhakrishnan@ed.ac.uk)
 
+
+### List of things to work on for future updates ###
+
+1. Make the cutoffs with arithmetic mean by default.
+
 ### Acknowledgements ###
 Tim Najuch for leading the discussion on this topic and helping me develop this code.
 Dr. Chris Ness for verifying the theory behind the forces.
