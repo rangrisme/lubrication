@@ -27,6 +27,7 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 1. Incorporate "FLD" or the Stokes' drag force on the particle, and also add the Stresslet contribution due to the Stokes drag.
 2. Make the cutoffs with arithmetic mean by default.
 3. Improve the readability of the code according to Tim Najuch's suggestions.
+4. Verify and update the flags.
 
 ### Acknowledgements ###
 Tim Najuch for leading the discussion on this topic and helping me develop this code.
