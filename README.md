@@ -23,7 +23,9 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 ### List of things to work on for future updates ###
 
-1. Make the cutoffs with arithmetic mean by default.
+1. Update the "FLD" or the fluid drag part to include the stress contribution to the drag
+2. Make the cutoffs with arithmetic mean by default.
+3. Improve the readability of the code according to Tim Najuch's suggestions.
 
 ### Acknowledgements ###
 Tim Najuch for leading the discussion on this topic and helping me develop this code.
