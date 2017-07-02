@@ -501,11 +501,12 @@ The components of the $\bm{H}$ resistance functions are
 \begin{equation}
 \begin{split}
 Y_H^{11}= 8 \pi a^3 \left(\frac{\beta(2-\beta)}{10 (1+\beta)^2} \ln{\xi^{-1}} \right),& Y_H^{12}= 8 \pi a^3 \left(\frac{\beta^2(1+7\beta)}{20 (1+\beta)^2} \ln{\xi^{-1}} \right),\\
-Y_H^{22}= 8 \pi b^3 \left(\frac{\beta^{-1}(2-\beta^{-1})}{10 (1+\beta^{-1})^2} \ln{\xi^{-1}} \right),& Y_H^{22}= 8 \pi b^3 \left(\frac{\beta^{-2}(1+7\beta^{-1})}{20 (1+\beta^{-1})^2} \ln{\xi^{-1}} \right)\ .
+Y_H^{21}= 8 \pi b^3 \left(\frac{\beta^{-1}(2-\beta^{-1})}{10 (1+\beta^{-1})^2} \ln{\xi^{-1}} \right),& Y_H^{22}= 8 \pi b^3 \left(\frac{\beta^{-2}(1+7\beta^{-1})}{20 (1+\beta^{-1})^2} \ln{\xi^{-1}} \right)\ .
 \end{split}
 \end{equation}
 
 \subsection{Relations between different components of the resistance functions}
+\label{sec:relate}
 
 To make the analysis simple, we can note that the following relations based on the formulae given in Ref.~\cite{KK1991} for the leading terms $\mathcal{O}(\xi^{-1}),\mathcal{O}(\ln(\xi^{-1}))$ of the lubrication force
 \begin{equation}
@@ -612,10 +613,8 @@ which, we can simplify using the following identitities
 \begin{equation}
 	\begin{split}
 	d^{(1)}_{ijkl}E^\infty_{kl}&=\frac{1}{2}(n_in_k\delta_{jl}+n_jn_k\delta_{il}+n_in_l\delta_{jk}+n_jn_l\delta_{ik}-4 n_i n_j n_k n_l)E^\infty_{kl}\\
-	&=2n_in_k(\delta_{jl}-n_jn_l)E^\infty_{kl}\ ,\\
-(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) E^\infty_{kl}n_l &=2n_in_k(\delta_{jl}-n_jn_l)E^\infty_{kl}\ ,\\
-(\epsilon_{ikl} n_l n_j+\epsilon_{jkl} n_l n_i)\Omega_k^\infty &=2 n_i \epsilon_{jkl} \Omega_k^\infty n_l \ ,\\ 
-(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) \epsilon_{kql}\Omega^\infty_{q}n_l &=2 n_i \epsilon_{jkl} \Omega^\infty_{k} n_l,\
+	&=(n_i \delta_{jk}+n_j \delta_{ik}-2n_in_jn_k)n_l E^\infty_{kl}\ , \\
+(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) \epsilon_{kql}\Omega^\infty_{q}n_l &= n_i \epsilon_{jkl} \Omega^\infty_{k} n_l+n_j \epsilon_{ikl} \Omega^\infty_{k} n_l\ ,
 	\end{split}
 \end{equation}
 to 
@@ -631,7 +630,7 @@ which can again be simplified based on the following relation
 \begin{equation}
 	\begin{split}
 	2/3 d^{(0)}_{ijkl}E^\infty_{kl}&=(n_in_j-\delta_{ij}/3)(n_kn_l-\delta_{kl}/3)d^{(0)}_{ijkl}E^\infty_{kl}\\
-	&=n_in_jn_kn_lE^\infty_{kl}\ , 
+	&=(n_in_j-\delta_{ij}/3) n_kn_lE^\infty_{kl}\ , 
 	\end{split}
 \end{equation}
 to be 
@@ -643,110 +642,69 @@ to be
 From \textcircled{1},\textcircled{2}, Eq.~\eqref{eq:simp_stresslet1} becomes 
 \begin{equation}
 	\begin{split}
-		S^1_{ik}/\mu=& \left(X_G^{11}(n_in_k-\delta_{ik}/3)n_j+2 n_k Y_G^{11}(\delta_{ji}-n_jn_i) \right)(U_j^2-U_j^1)\\
-		&- 2 n_i \epsilon_{kjl} n_l (Y_H^{11}\omega_j^1+Y_H^{12}\omega_j^2)\ .
+S^1_{ij}/\mu=& \left(X_G^{11}(n_in_j-\delta_{ij}/3)n_k+Y_G^{11}(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) \right)(U_k^2-U_k^1)\\
+		&- \left(\epsilon_{ikl} n_l n_j+\epsilon_{jkl} n_l n_i \right)(Y_H^{11}\omega_k^1+Y_H^{12}\omega_k^2)\ .\\
 	\end{split}
 	\label{eq:simple_let1}
 \end{equation}
-
-Similarly, we can get,
+Since,
 \begin{equation}
 	\begin{split}
-		S^2_{ik}/\mu=& \left(X_G^{21}(n_in_k-\delta_{ik}/3)n_j+2 n_k Y_G^{21}(\delta_{ji}-n_jn_i) \right)(U_j^2-U_j^1)\\
-		&- 2 n_i \epsilon_{kjl} n_l (Y_H^{21}\omega_j^1+Y_H^{22}\omega_j^2)\ .
+		\bm{S}^2/\mu=& \bm{G}^{21}(\vec{v}^\infty(\vec{x^1})-\vec{U}^1)+\bm{G}^{22}(\vec{v}^\infty(\vec{x}^2)-\vec{U^2})\\
+		&+ \bm{H}^{21}(\vec{\Omega}^\infty-\vec{\omega}^1)+\bm{H}^{22}(\vec{\Omega}^\infty-\vec{\omega}^2)\\
+		&+ \bm{M}^{21}\bm{E}^\infty + \bm{M}^{22}\bm{E}^\infty \ ,
+	\end{split}
+	\label{eq:stresslet1}
+\end{equation}
+
+we can get,
+\begin{equation}
+	\begin{split}
+S^2_{ij}/\mu=& \left(X_G^{21}(n_in_j-\delta_{ij}/3)n_k+Y_G^{21}(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) \right)(U_k^2-U_k^1)\\
+		&- \left(\epsilon_{ikl} n_l n_j+\epsilon_{jkl} n_l n_i \right)(Y_H^{21}\omega_k^1+Y_H^{22}\omega_k^2)\ .\\
 	\end{split}
 	\label{eq:simple_let2}
 \end{equation}
-Note that, the stresslets on particles 1, and 2 are not equal in magnitude, i.e. $S^1_{ik}\ne-S^2_{ik}$.
+Note that, the stresslets on particles 1, and 2 are not equal in magnitude, i.e. $S^1_{ij}\ne-S^2_{ij}$.
 
 The stress acting between the two particles can be obtained as a sum of the individual stresslets, since the total stress is a sum of all the stresslets acting on all the particles. So, we have
 \begin{equation}
 	\begin{split}
-			(S^1_{ik}+S^2_{ik})/\mu=& \left((X_G^{11}+X_G^{21})(n_in_k-\delta_{ik}/3)n_j+2 n_k (Y_G^{11}+Y_G^{21})(\delta_{ji}-n_jn_i) \right)(U_j^2-U_j^1)\\
-		&- 2 n_i \epsilon_{kjl} n_l ((Y_H^{11}+Y_H^{21})\omega_j^1+(Y_H^{12}+Y_H^{22})\omega_j^2)\\ 
-			=& (a+b)\left(X_A^{11}n_in_j+ Y_A^{11} (\delta_{ij}-n_in_j) \right) (U_j^2-U_j^1)n_k \\
-		       &+ (a+b) \epsilon_{kjl} (Y_B^{11} \omega_j^1 +Y_B^{21} \omega_j^2)n_l n_i -(a+b)X_A^{11}(U_j^2-U_j^1) n_j \delta_{ik}/3
+\dfrac{ S_{ij}^1+S_{ij}^2 }{ \mu } &= (X_G^{11}+ X_G^{21})(n_in_j-\delta_{ij}/3)n_k  (U_k^2-U_k^1)\\
+&+(Y_G^{11}+Y_G^{21})(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) (U_k^2-U_k^1)\\
+		&- \left(\epsilon_{ikl} n_l n_j+\epsilon_{jkl} n_l n_i \right)((Y_H^{11}+Y_H^{21})\omega_k^1+(Y_H^{12}+Y_H^{22})\omega_k^2)\ ,
 	\end{split}
-	\label{eq:simple_let2}
 \end{equation}
-
-The anti-symmetric part of the stress acting between two particles is given by
+which can be simplified from the relations given in Sec.~\ref{sec:relate} to be 
 \begin{equation}
 	\begin{split}
-			(A^1_{ij})/\mu=& \left((X_G^{11}+X_G^{21})(n_in_k-\delta_{ik}/3)n_j+2 n_k (Y_G^{11}+Y_G^{21})(\delta_{ji}-n_jn_i) \right)(U_j^2-U_j^1)\\
-		&- 2 n_i \epsilon_{kjl} n_l ((Y_H^{11}+Y_H^{21})\omega_j^1+(Y_H^{12}+Y_H^{22})\omega_j^2)\\ 
-			=& (a+b)\left(X_A^{11}n_in_j+ Y_A^{11} (\delta_{ij}-n_in_j) \right) (U_j^2-U_j^1)n_k \\
-		       &+ (a+b) \epsilon_{kjl} (Y_B^{11} \omega_j^1 +Y_B^{21} \omega_j^2)n_l n_i -(a+b)X_A^{11}(U_j^2-U_j^1) n_j \delta_{ik}/3
-	\end{split}
-	\label{eq:simple_let2}
+	\dfrac{ S^1_{ij}+S^2_{ij} }{(a+b)\mu }&=\left( X_A^{11} (n_in_j-\delta_{ij}/3)n_k+\dfrac{Y_A^{11}}{2}(n_i\delta_{jk}+n_j\delta_{ik}-2n_in_jn_k) \right)(U_k^2-U_k^1) \\ 
+	&+ \left(n_j \epsilon_{ikl} +  n_i\epsilon_{jkl} \right)(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2)n_l/2 \ ,
+	       \end{split}
+	       \label{eq:simp_stresslet}
 \end{equation}
 
-
-
 Let us now compare the stress tensor obtained by dyadic of force of particle 1 to the distance vector, which is
-
 \begin{equation}
 \begin{split}
-	(F^1_i n_k)R/\mu=& (\ X_A^{11}n_in_j+Y_A^{11}(\delta_{ij}-n_in_j)\ )(U^2_j-U^1_j) n_k R\\
-	&+ R \epsilon_{kjl} \left(Y_B^{11}\omega_j^1+Y_B^{21}\omega_j^2\right) n_l n_i \ .\\
+	(F^1_i n_j)R/\mu=& (\ X_A^{11}n_in_k+Y_A^{11}(\delta_{ik}-n_in_k)\ )(U^2_k-U^1_k) n_j R\\
+	&+ R \epsilon_{jkl} \left(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2\right) n_l n_i \ .\\
 \end{split}
 \end{equation}
 
-The difference between the two equations, apart from the $\mathcal{O}(\xi)$ differences, is only in the isotropic part $\delta_{ik}$, which should vanish if the stress satisfies continuity equation $\nabla\cdot\sigma=0$.
+If we make the above equation symmetric by adding the transpose and dividing by 2, we get
+\begin{equation}
+\begin{split}
+	\dfrac{F^1_i n_j+F^1_j n_i}{2 \mu}=& (\ X_A^{11} n_i n_j n_k + \dfrac{Y_A^{11}}{2}(n_i \delta_{jk}+n_j \delta_{ik}-2 n_in_jn_k)\ )(U^2_k-U^1_k) \\
+	&+  ( n_j\epsilon_{ikl}+ n_i\epsilon_{jkl} ) \left(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2\right) n_l/2  \ .\\
+\end{split}
+\end{equation}
+
+
+The difference between Eq.\eqref{eq:simp_stresslet} and the above, apart from the $\mathcal{O}(\xi)$ differences, is only in the isotropic part $\delta_{ij}$, which should vanish if the stress satisfies continuity equation $\nabla\cdot\sigma=0$.
 
 
 \bibliography{ref_lub}
 \end{document}
-
-
-
-\iffalse
-Let's us now compare Ball and Melrose (BM) formula. The torque from BM is the sum of two contributions. The first is the shear contribution
-\begin{equation}
-	\begin{split}
-		(\tau_i/\mu)_s&=-a(F^1\times n)_i/\mu =-a \epsilon_{iqr} F^1_q n_r, \\
-		&=-a Y_A^{11}\epsilon_{iqr}(U^2_q-U^1_q) n_r - a(\delta_{rj}\delta_{ik}-\delta_{rk}\delta_{ij})  \left(Y_B^{11}\omega_j^1+Y_B^{21}\omega_j^2\right) n_k n_r \\
-	&=-a Y_A^{11}\epsilon_{ijk}(U^2_j-U^1_j) n_k + a(\delta_{ij}-n_i n_j)\left((Y_B^{11}+Y_B^{12})(\omega_j^1+\omega_j^2)/2 -(Y_B^{11}-Y_B^{12})(\omega_j^1-\omega_j^2)/2)  \ ,\\
-	&=-a Y_A^{11}\epsilon_{ijk}(U^2_j-U^1_j) n_k + a(\delta_{ij}-n_i n_j)\left(-(a+b) Y_A^{11}(\omega_j^1+\omega_j^2)/2 -(Y_B^{11}-Y_B^{12})(\omega_j^1-\omega_j^2)/2)  \ ,
-	\end{split}
-	\label{eq:t1_simp}
-\end{equation}
-and the second is the pump contribution
-\begin{equation}
-	\begin{split}
-		(\tau_i/\mu)_p=-\frac{3\pi a^3}{20}(\delta_{ij}-n_i n_j)(\omega^1_j-\omega^2_j)\ln(1/\xi)
-	\end{split}
-	\label{eq:t1_simp}
-\end{equation}
-
-
-\section{Is $\vec{F}^1=-\vec{F}^2$, and $\vec{T}^1=-\vec{T}^2$ in general?}
-According to Ref.~\cite{KK1991}, Chapter 7, we can write force on particle 1 as
-\begin{equation}
-	\begin{split}
-		F^1/\mu=& A^{11}_{ij}(v^\infty(x^1)-U^1)_j+A^{12}_{ij}(v^\infty(x^2)-U^2)_j\\
-		&+ \widetilde{B}^{11}_{ij}(\Omega^\infty-\omega^1)_j+\widetilde{B}^{12}_{ij}(\Omega^\infty-\omega^2)_j\\
-		&+ \widetilde{G}^{11}_{ijk}E^\infty_{jk} + \widetilde{G}^{12}_{ijk}E^\infty_{jk} \ ,
-	\end{split}
-\end{equation}
-and on particle 2 as
-\begin{equation}
-	\begin{split}
-		F^2/\mu=& A^{22}_{ij}(v^\infty(x^1)-U^1)_j+A^{12}_{ij}(v^\infty(x^2)-U^2)_j\\
-		&+ \widetilde{B}^{11}_{ij}(\Omega^\infty-\omega^1)_j+\widetilde{B}^{12}_{ij}(\Omega^\infty-\omega^2)_j\\
-		&+ \widetilde{G}^{11}_{ijk}E^\infty_{jk} + \widetilde{G}^{12}_{ijk}E^\infty_{jk} \ ,
-	\end{split}
-\end{equation}
-
-\fi
-
-
-
-
-
-
-
-
-
 
 

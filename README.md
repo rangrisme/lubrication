@@ -9,8 +9,9 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 ### How do I get set up? ###
 
 * Copy Simple.h and Simple.cpp in LAMMPS installation's src folder and recreate an executable.
-* pair_lubricate.h
+* It needs pair_lubricate.h
 * Modify the two particle collison code: collision.lmp, and compare it using the matlab scripts provided.
+* All the flags are similar to that of lubricate/poly
 
 ### Contribution guidelines ###
 
@@ -23,7 +24,10 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 ### List of things to work on for future updates ###
 
-1. Make the cutoffs with arithmetic mean by default.
+1. Incorporate "FLD" or the Stokes' drag force on the particle, and also add the Stresslet contribution due to the Stokes drag.
+2. Make the cutoffs with arithmetic mean by default.
+3. Improve the readability of the code according to Tim Najuch's suggestions.
+4. Verify and update the flags.
 
 ### Acknowledgements ###
 Tim Najuch for leading the discussion on this topic and helping me develop this code.
