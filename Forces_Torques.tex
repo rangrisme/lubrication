@@ -629,7 +629,7 @@ Grouping some of the $X_G^{11}$ terms in Eq.~\eqref{eq:simp_stresslet1}, we have
 which can again be simplified based on the following relation
 \begin{equation}
 	\begin{split}
-	2/3 d^{(0)}_{ijkl}E^\infty_{kl}&=(n_in_j-\delta_{ij}/3)(n_kn_l-\delta_{kl}/3)d^{(0)}_{ijkl}E^\infty_{kl}\\
+	2/3 d^{(0)}_{ijkl}E^\infty_{kl}&=(n_in_j-\delta_{ij}/3) (n_kn_l-\delta_{kl}/3) E^\infty_{kl}\\
 	&=(n_in_j-\delta_{ij}/3) n_kn_lE^\infty_{kl}\ , 
 	\end{split}
 \end{equation}
@@ -688,7 +688,7 @@ Let us now compare the stress tensor obtained by dyadic of force of particle 1 t
 \begin{equation}
 \begin{split}
 	(F^1_i n_j)R/\mu=& (\ X_A^{11}n_in_k+Y_A^{11}(\delta_{ik}-n_in_k)\ )(U^2_k-U^1_k) n_j R\\
-	&+ R \epsilon_{jkl} \left(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2\right) n_l n_i \ .\\
+	&+ R \epsilon_{ikl} \left(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2\right) n_l n_j \ .\\
 \end{split}
 \end{equation}
 
@@ -702,6 +702,28 @@ If we make the above equation symmetric by adding the transpose and dividing by 
 
 
 The difference between Eq.\eqref{eq:simp_stresslet} and the above, apart from the $\mathcal{O}(\xi)$ differences, is only in the isotropic part $\delta_{ij}$, which should vanish if the stress satisfies continuity equation $\nabla\cdot\sigma=0$.
+
+We can also examine what is the antisymmetric component of the Cauchy stress tensor, by examining the following
+\begin{equation}
+\begin{split}
+	\dfrac{F^1_i n_j-F^1_j n_i}{2 \mu}=& Y_A^{11} (\ n_j \delta_{ik}-n_i \delta_{jk}\ )(U^2_k-U^1_k)/2 +  ( n_j\epsilon_{ikl}-n_i\epsilon_{jkl} ) \left(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2\right) n_l/2  \ .\\
+\end{split}
+\end{equation}
+
+This antisymmetric component can also be obtained by taking
+\begin{equation}
+	A_{ij}=-\epsilon_{ijk} \dfrac{(T^1+T^2)_k}{2} \ .
+\end{equation}
+
+Therefore, 
+\begin{equation}
+	\begin{split}
+	\dfrac{A_{ij}}{\mu (a+b)}&=-\epsilon_{ijk} \frac{(T^1+T^2)_k}{2 \mu (a+b)}\ , \\
+	&= \epsilon_{ijk} \left( \epsilon_{kpq}  Y_A^{11} (U^2_p-U^1_p)n_q +( \delta_{kp}-n_kn_p)(Y_B^{11}\omega_p^1+Y_B^{21}\omega_p^2 )\right)/2\ ,\\
+	&= Y_A^{11} (\ n_j \delta_{ik}-n_i \delta_{jk}\ )(U^2_k-U^1_k)/2 +( \epsilon_{ijk} \delta_{kl} -\epsilon_{ijk} n_kn_l)(Y_B^{11}\omega_l^1+Y_B^{21}\omega_l^2 )/2, \\
+	&= Y_A^{11} (\ n_j \delta_{ik}-n_i \delta_{jk}\ )(U^2_k-U^1_k)/2 +( n_j\epsilon_{ikl}-n_i\epsilon_{jkl} )(Y_B^{11}\omega_k^1+Y_B^{21}\omega_k^2 ) n_l/2
+\end{split}
+\end{equation}
 
 
 \bibliography{ref_lub}
