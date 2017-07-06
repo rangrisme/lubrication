@@ -3,15 +3,16 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 ### What is this repository for? ###
 
-* Lubrication force between two particles.
-* 1.0
+* Calculating lubrication force between two particles using LAMMPS (https://github.com/lammps).
+* Stokes drag for every particle
 
 ### How do I get set up? ###
 
 * Copy Simple.h and Simple.cpp in LAMMPS installation's src folder and recreate an executable.
 * It needs pair_lubricate.h
+* All the flags are the same as lubricate/poly. flagfld now stands for Stokes drag. flagVF is kept for legacy reasons and will not affect the results when set to 0 or 1.
+* Ensure that the inner and outer cutoffs are greater than sphere diameter, and use pair_modify mix arithmetic for spheres of different sizes.
 * Modify the two particle collison code: collision.lmp, and compare it using the matlab scripts provided.
-* All the flags are similar to that of lubricate/poly
 
 ### Contribution guidelines ###
 
@@ -24,12 +25,12 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 ### List of things to work on for future updates ###
 
-1. Incorporate "FLD" or the Stokes' drag force on the particle, and also add the Stresslet contribution due to the Stokes drag.
+1. Make the class to be independent of pair_lubricate files.
 2. Make the cutoffs with arithmetic mean by default.
-3. Improve the readability of the code according to Tim Najuch's suggestions.
-4. Verify and update the flags.
+3. When Stokes drag is included using flagfld=1, change v_stream velocities based on the bottom edge of the box. Currently v_stream assumes the box bottom edges to be at 0, it needs to depend on the actual box dimensions. Note that the v_stream in both the cases will only differ by a constant, and will not have much impact on the steady state results.
 
 ### Acknowledgements ###
-Tim Najuch for leading the discussion on this topic and helping me develop this code.
-Dr. Chris Ness for verifying the theory behind the forces.
-Prof. Jin Sun for his kind support and encouragement.
+Tim Najuch (University of Edinburgh) for leading the discussion on this topic and helping me develop this code.
+Dr. Chris Ness (Cambridge University)for verifying the theory behind the forces.
+Prof. Jin Sun (University of Edinburgh) for his kind support and encouragement.
+EPSRC for funding under Future Formulation of Complex Products.
