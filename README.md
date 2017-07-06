@@ -3,15 +3,15 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 ### What is this repository for? ###
 
-* Calculating lubrication force between two particles using LAMMPS (https://github.com/lammps).
-* Stokes drag for every particle
+* Calculating lubrication force between two particles using [LAMMPS](https://github.com/lammps).
+* Calculating Stokes drag for every particle using LAMMPS.
 
 ### How do I get set up? ###
 
-* Copy Simple.h and Simple.cpp in LAMMPS installation's src folder and recreate an executable.
-* It needs pair_lubricate.h
-* All the flags are the same as lubricate/poly. flagfld now stands for Stokes drag. flagVF is kept for legacy reasons and will not affect the results when set to 0 or 1.
-* Ensure that the inner and outer cutoffs are greater than sphere diameter, and use pair_modify mix arithmetic for spheres of different sizes.
+* Copy Simple.h and Simple.cpp in LAMMPS installation's src folder and recreate the LAMMPS executable.
+* It depends on pair_lubricate.h that is included with LAMMPS.
+* All the flags are the same as [lubricate/poly](http://lammps.sandia.gov/doc/pair_lubricate.html). flagfld now stands for Stokes drag. flagVF is left for legacy reasons and will not affect the results when set to 0 or 1.
+* Ensure that the inner and outer cutoffs are greater than sphere diameter, and use pair_modify mix arithmetic for spheres of different sizes. (See collision.lmp example)
 * Modify the two particle collison code: collision.lmp, and compare it using the matlab scripts provided.
 
 ### Contribution guidelines ###
