@@ -291,11 +291,11 @@ void PairLubricateSimple::compute(int eflag, int vflag)
 
 				// set j = nlocal so that only I gets tallied
 
-				//	if (evflag) ev_tally_xyz(i,nlocal,nlocal,0,0.0,0.0,fx,fy,fz,delx,dely,delz);
+					if (evflag) ev_tally_xyz(i,nlocal,nlocal,0,0.0,0.0,fx,fy,fz,delx,dely,delz);
 				//
 				//Add up stresslet for particle i
-				v_tally_tensor(i,nlocal,nlocal,newton_pair,fx*delx,fy*dely,fz*delz,
-						0.5*(fx*dely+fy*delx),0.5*(fx*delz+fz*delx),0.5*(fy*delz+fz*dely));
+				// v_tally_tensor(i,nlocal,nlocal,newton_pair,fx*delx,fy*dely,fz*delz,
+						// 0.5*(fx*dely+fy*delx),0.5*(fx*delz+fz*delx),0.5*(fy*delz+fz*dely));
 
 			}
 		}
