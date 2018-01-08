@@ -22,6 +22,7 @@ This Simple.h, Simple.cpp are LAMMPS scripts for the simplified lubrication forc
 
 * Ranga (r.radhakrishnan@ed.ac.uk)
 
+[![DOI](https://zenodo.org/badge/116663558.svg)](https://zenodo.org/badge/latestdoi/116663558)
 
 ### List of things to work on for future updates ###
 
