@@ -48,5 +48,7 @@ thermo		1
 thermo_modify	lost ignore norm no
 compute_modify	thermo_temp dynamic yes
 
+fix pid all print 1 "$(step) $(c_mypres[4])" file stressOutputKE
+
 dump	id all custom 1 dump.lammpstrj id type radius mass x y z vx vy vz fx fy fz tqx tqy tqz omegax omegay omegaz
 run 50

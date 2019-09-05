@@ -14,7 +14,7 @@ mu = 1; %FLD_VISC
 
 Kn=10000;
 
-folder = '/tmp/ranga/two_particles/Simple/';
+folder = './';
 filename2 = strcat(folder,'dump.lammpstrj');
 
 gdot =0.0; % 0.05;
@@ -264,7 +264,8 @@ for i = 1:N %size(s,2)
             fy2=mu*(F_l_ny+F_l_ty+F_l_wy1+F_l_wy2);
             fz2=mu*(F_l_nz+F_l_tz+F_l_wz1+F_l_wz2);
             
-            flubanalyticaln(i)=sqrt((fx1+fx2).^2+(fy1+fy2).^2+(fz1+fz2).^2);
+       %     flubanalyticaln(i)=sqrt((fx1+fx2).^2+(fy1+fy2).^2+(fz1+fz2).^2);
+            flubanalyticaln(i)=sqrt((fx2).^2+(fy2).^2+(fz2).^2);
             
             toranalx(i)=T_l_nx;
             toranaly(i)=T_l_ny;
@@ -293,24 +294,24 @@ display('Plot of analytical solution for stress')
 
 
     subplot(3,1,1);
-   plot(time, f_dimensionless, 'o','LineWidth', 2);
+    plot(time, f_dimensionless, 'o','LineWidth', 2);
     hold on;
     plot(time, flubanalyticaln, '-r','linewidth', 2);
     
     %xlabel('Time');
     ylabel('Force');
     set(gca,'XScale','log');
-    %hold off;
+    hold off;
     
     
     subplot(3,1,2);
     plot(time,sqrt(toranalx.^2+toranaly.^2+toranalz.^2), '-b','LineWidth', 2);
     hold on;
-     plot(time,sqrt(torx.^2+tory.^2+torz.^2), 'xb','LineWidth', 2);
+    plot(time,sqrt(torx.^2+tory.^2+torz.^2), 'xb','LineWidth', 2);
     %xlabel('Time');
     ylabel('Torque');
     set(gca,'XScale','log');
-    %hold off;
+    hold off;
     
     
     
@@ -336,4 +337,4 @@ plot(sdata(:,1)*dt,-sdata(:,2), 'ok','LineWidth', 2);
 set(gca,'XScale','log');
 xlabel('Time');
 ylabel('Stress');
-%hold off;
+hold off;
